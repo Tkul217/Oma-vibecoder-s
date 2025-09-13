@@ -86,10 +86,9 @@ class CarConditionAnalyzer:
         #     confidence = float(probabilities.max())
         #     prediction = 'clean' if outputs.argmax() == 0 else 'dirty'
         
-        # Mock implementation
-        import random
-        confidence = 0.7 + random.random() * 0.3
-        status = 'clean' if random.random() > 0.5 else 'dirty'
+        # Mock implementation - предполагаем чистый автомобиль
+        confidence = 0.85
+        status = 'clean'
         
         return {
             'status': status,
@@ -106,10 +105,9 @@ class CarConditionAnalyzer:
         #     confidence = float(probabilities.max())
         #     prediction = 'intact' if outputs.argmax() == 0 else 'damaged'
         
-        # Mock implementation
-        import random
-        confidence = 0.6 + random.random() * 0.4
-        status = 'intact' if random.random() > 0.4 else 'damaged'
+        # Mock implementation - предполагаем целый автомобиль
+        confidence = 0.78
+        status = 'intact'
         
         return {
             'status': status,

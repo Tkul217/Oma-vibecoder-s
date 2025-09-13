@@ -92,7 +92,9 @@ class CarConditionAnalyzer:
         
         if model_path.exists() and ML_AVAILABLE:
             try:
-                model = torch.load(model_path, map_location=self.device)
+                # Создаем модель и загружаем веса
+                model = CarConditionModel(num_classes=2)
+                model.load_state_dict(torch.load(model_path, map_location=self.device))
                 model.eval()
                 print(f"Загружена отдельная модель: {model_name}", file=sys.stderr)
                 return model
@@ -197,16 +199,40 @@ class CarConditionAnalyzer:
     
     def _analyze_mock(self, image_path):
         """Mock анализ для демонстрации"""
-        import random
+        # Простой анализ по имени файла (пока нет обученной модели)
+        filename = os.path.basename(image_path).lower()
         
         # Имитируем анализ изображения
-        time.sleep(0.5)  # Имитация времени обработки
+        time.sleep(0.5)
+        
+        # Анализ по ключевым словам в имени файла
+        if 'clean' in filename:
+            cleanliness = 'clean'
+            clean_conf = 0.85
+        elif 'dirty' in filename:
+            cleanliness = 'dirty' 
+            clean_conf = 0.82
+        else:
+            # Если нет ключевых слов, предполагаем чистый
+            cleanliness = 'clean'
+            clean_conf = 0.75
+            
+        if 'damaged' in filename or 'broken' in filename:
+            condition = 'damaged'
+            cond_conf = 0.88
+        elif 'intact' in filename:
+            condition = 'intact'
+            cond_conf = 0.85
+        else:
+            # Если нет ключевых слов, предполагаем целый
+            condition = 'intact'
+            cond_conf = 0.78
         
         return {
-            'cleanliness': random.choice(['clean', 'dirty']),
-            'cleanlinessConfidence': 0.7 + random.random() * 0.3,
-            'condition': random.choice(['intact', 'damaged']),
-            'conditionConfidence': 0.6 + random.random() * 0.4
+            'cleanliness': cleanliness,
+            'cleanlinessConfidence': clean_conf,
+            'condition': condition,
+            'conditionConfidence': cond_conf
         }
 
 def main():

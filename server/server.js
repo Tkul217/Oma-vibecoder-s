@@ -1,11 +1,15 @@
 const express = require('express');
 const multer = require('multer');
+const cors = require('cors');
 const path = require('path');
 const fs = require('fs');
 const { spawn } = require('child_process');
 
 const app = express();
 const PORT = 3001;
+
+// Enable CORS
+app.use(cors());
 
 // Configure multer for file uploads
 const storage = multer.diskStorage({
@@ -46,58 +50,54 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // Mock ML Model Analysis Function
 async function analyzeCarImage(imagePath) {
-  // Проверяем, есть ли Python скрипт для ML анализа
+  // Используем реальную ML модель
   const pythonScript = path.join(__dirname, '../ml/analyze.py');
   
-  if (fs.existsSync(pythonScript)) {
-    // Используем реальную ML модель
-    return new Promise((resolve, reject) => {
-      const python = spawn('python', [pythonScript, imagePath]);
-      
-      let result = '';
-      let error = '';
-      
-      python.stdout.on('data', (data) => {
-        result += data.toString();
-      });
-      
-      python.stderr.on('data', (data) => {
-        error += data.toString();
-      });
-      
-      python.on('close', (code) => {
-        if (code === 0) {
-          try {
-            const analysisResult = JSON.parse(result);
-            resolve(analysisResult);
-          } catch (e) {
-            reject(new Error('Invalid JSON response from ML model'));
-          }
-        } else {
-          console.error('Python ML error:', error);
-          // Fallback to mock if ML fails
-          resolve(getMockPrediction());
-        }
-      });
+  return new Promise((resolve, reject) => {
+    console.log(`Analyzing with ML model: ${pythonScript}`);
+    const python = spawn('python3', [pythonScript, imagePath]);
+    
+    let result = '';
+    let error = '';
+    
+    python.stdout.on('data', (data) => {
+      result += data.toString();
     });
-  } else {
-    // Используем mock данные если ML скрипт не найден
-    console.log('ML script not found, using mock data');
-    return getMockPrediction();
-  }
+    
+    python.stderr.on('data', (data) => {
+      error += data.toString();
+    });
+    
+    python.on('close', (code) => {
+      if (code === 0) {
+        try {
+          const analysisResult = JSON.parse(result);
+          console.log('ML analysis result:', analysisResult);
+          resolve(analysisResult);
+        } catch (e) {
+          console.error('JSON parse error:', e);
+          console.error('Raw result:', result);
+          reject(new Error('Invalid JSON response from ML model'));
+        }
+      } else {
+        console.error('Python ML error (code ' + code + '):', error);
+        reject(new Error(`ML analysis failed: ${error}`));
+      }
+    });
+  });
 }
 
 function getMockPrediction() {
   // Simulate processing time
-  const processingTime = Math.random() * 1000 + 500; // 500-1500ms
+  const processingTime = Math.round(Math.random() * 1000 + 800); // 800-1800ms
   
   // Mock predictions with random confidence scores
   return {
-    cleanliness: Math.random() > 0.5 ? 'clean' : 'dirty',
+    cleanliness: Math.random() > 0.3 ? 'clean' : 'dirty', // 70% чистых
     cleanlinessConfidence: 0.7 + Math.random() * 0.3, // 70-100%
-    condition: Math.random() > 0.6 ? 'intact' : 'damaged',
+    condition: Math.random() > 0.4 ? 'intact' : 'damaged', // 60% целых
     conditionConfidence: 0.6 + Math.random() * 0.4, // 60-100%
-    processingTime: Math.round(processingTime)
+    processingTime: processingTime
   };
 }
 
@@ -115,7 +115,7 @@ app.post('/api/analyze', upload.single('image'), async (req, res) => {
     await new Promise(resolve => setTimeout(resolve, 800));
 
     // Analyze the image (mock ML model)
-    const analysisResult = analyzeCarImage(imagePath);
+    const analysisResult = await analyzeCarImage(imagePath);
 
     // Clean up uploaded file (optional, for demo purposes)
     setTimeout(() => {
