@@ -7,6 +7,10 @@ interface AnalysisResult {
   condition: 'intact' | 'damaged';
   conditionConfidence: number;
   processingTime: number;
+  qualityScore?: number;
+  overallCondition?: string;
+  recommendations?: string[];
+  modelType?: string;
 }
 
 function App() {
@@ -53,7 +57,7 @@ function App() {
       const formData = new FormData();
       formData.append('image', selectedFile);
 
-      const response = await fetch('/api/analyze', {
+      const response = await fetch('http://localhost:5010/predict', {
         method: 'POST',
         body: formData,
       });
@@ -62,7 +66,21 @@ function App() {
         throw new Error('Analysis failed');
       }
 
-      const analysisResult: AnalysisResult = await response.json();
+      const data = await response.json();
+      
+      // Конвертируем ответ Python API в формат React
+      const analysisResult: AnalysisResult = {
+        cleanliness: data.cleanliness.class === 'Чистый' ? 'clean' : 'dirty',
+        cleanlinessConfidence: data.cleanliness.confidence,
+        condition: data.damage.class === 'Целый' ? 'intact' : 'damaged',
+        conditionConfidence: data.damage.confidence,
+        processingTime: data.metadata?.processing_time_ms || 0,
+        qualityScore: data.quality_score,
+        overallCondition: data.overall_condition,
+        recommendations: data.recommendations,
+        modelType: 'improved'
+      };
+      
       setResult(analysisResult);
     } catch (err) {
       setError('Не удалось проанализировать изображение. Попробуйте еще раз.');
@@ -212,11 +230,46 @@ function App() {
                     </p>
                   </div>
 
+                  {/* Quality Score */}
+                  {result.qualityScore && (
+                    <div className="p-4 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl border border-blue-200">
+                      <div className="flex items-center justify-between mb-2">
+                        <h3 className="font-semibold text-gray-900">Общая оценка</h3>
+                        <span className="text-2xl font-bold text-blue-600">{result.qualityScore}%</span>
+                      </div>
+                      <p className="text-sm text-gray-600">
+                        {result.overallCondition || 'Состояние автомобиля'}
+                      </p>
+                    </div>
+                  )}
+
+                  {/* Recommendations */}
+                  {result.recommendations && result.recommendations.length > 0 && (
+                    <div className="p-4 bg-amber-50/80 rounded-xl border border-amber-200">
+                      <h3 className="font-semibold text-gray-900 mb-3">💡 Рекомендации</h3>
+                      <ul className="space-y-2">
+                        {result.recommendations.map((rec, index) => (
+                          <li key={index} className="text-sm text-gray-700 flex items-start">
+                            <span className="mr-2">•</span>
+                            <span>{rec}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+
                   {/* Processing Info */}
                   <div className="p-4 bg-gray-50/80 rounded-xl border">
-                    <p className="text-sm text-gray-600">
-                      Время обработки: {result.processingTime}мс
-                    </p>
+                    <div className="flex items-center justify-between">
+                      <p className="text-sm text-gray-600">
+                        Время обработки: {result.processingTime}мс
+                      </p>
+                      {result.modelType === 'improved' && (
+                        <span className="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full">
+                          Улучшенная модель
+                        </span>
+                      )}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -231,9 +284,12 @@ function App() {
             <div className="bg-white/80 backdrop-blur-sm rounded-xl shadow-lg border border-white/20 p-6">
               <h2 className="text-xl font-semibold text-gray-900 mb-4">Как это работает</h2>
               <div className="space-y-3 text-sm text-gray-600">
+                <p>• <strong>Улучшенная модель:</strong> Использует EfficientNet-B3 с attention механизмами</p>
                 <p>• <strong>Определение чистоты:</strong> Анализирует грязь, пыль и общую чистоту автомобиля</p>
                 <p>• <strong>Оценка повреждений:</strong> Выявляет царапины, вмятины и структурные повреждения</p>
-                <p>• <strong>Показатели уверенности:</strong> Предоставляет метрики надежности для каждого прогноза</p>
+                <p>• <strong>Общая оценка:</strong> Предоставляет качественный скор от 0 до 100%</p>
+                <p>• <strong>Умные рекомендации:</strong> Дает советы по улучшению состояния автомобиля</p>
+                <p>• <strong>Ансамблевые методы:</strong> Повышает точность за счет множественных предсказаний</p>
                 <p>• <strong>Быстрая обработка:</strong> Результаты обычно доступны менее чем за 2 секунды</p>
               </div>
             </div>

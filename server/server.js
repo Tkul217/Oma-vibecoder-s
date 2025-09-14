@@ -48,13 +48,15 @@ const upload = multer({
 app.use(express.json());
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
-// Mock ML Model Analysis Function
+// Улучшенная ML модель анализа
 async function analyzeCarImage(imagePath) {
-  // Используем реальную ML модель
-  const pythonScript = path.join(__dirname, '../ml/analyze.py');
+  // Используем улучшенную модель из папки model
+  const pythonScript = path.join(__dirname, '../model/cli_analyze.py');
   
   return new Promise((resolve, reject) => {
-    console.log(`Analyzing with ML model: ${pythonScript}`);
+    console.log(`Analyzing with improved ML model: ${pythonScript}`);
+    
+    // Запускаем Python скрипт для анализа через CLI
     const python = spawn('python3', [pythonScript, imagePath]);
     
     let result = '';
@@ -72,19 +74,41 @@ async function analyzeCarImage(imagePath) {
       if (code === 0) {
         try {
           const analysisResult = JSON.parse(result);
-          console.log('ML analysis result:', analysisResult);
-          resolve(analysisResult);
+          console.log('Improved ML analysis result:', analysisResult);
+          
+          // Конвертируем результат в формат, ожидаемый фронтендом
+          const convertedResult = convertAnalysisResult(analysisResult);
+          resolve(convertedResult);
         } catch (e) {
           console.error('JSON parse error:', e);
           console.error('Raw result:', result);
-          reject(new Error('Invalid JSON response from ML model'));
+          reject(new Error('Invalid JSON response from improved ML model'));
         }
       } else {
         console.error('Python ML error (code ' + code + '):', error);
-        reject(new Error(`ML analysis failed: ${error}`));
+        reject(new Error(`Improved ML analysis failed: ${error}`));
       }
     });
   });
+}
+
+// Конвертация результата из улучшенной модели в формат фронтенда
+function convertAnalysisResult(result) {
+  if (!result.success) {
+    throw new Error(result.error || 'Analysis failed');
+  }
+  
+  return {
+    cleanliness: result.cleanliness.class === 'Чистый' ? 'clean' : 'dirty',
+    cleanlinessConfidence: result.cleanliness.confidence,
+    condition: result.damage.class === 'Целый' ? 'intact' : 'damaged',
+    conditionConfidence: result.damage.confidence,
+    processingTime: result.metadata?.processing_time_ms || 0,
+    qualityScore: result.quality_score,
+    overallCondition: result.overall_condition,
+    recommendations: result.recommendations,
+    modelType: 'improved'
+  };
 }
 
 // Routes
