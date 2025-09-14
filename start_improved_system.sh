@@ -52,7 +52,7 @@ echo "🚀 Запускаем систему..."
 # Запускаем Python API в фоне
 echo "🐍 Запуск Python API (порт 5010)..."
 cd model
-python improved_app.py &
+python3 improved_app.py &
 PYTHON_PID=$!
 cd ..
 
