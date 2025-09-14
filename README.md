@@ -13,6 +13,8 @@
 
 ## 🚀 Быстрый запуск
 
+Скачать файлы и положить в директорию /model по ссылке https://drive.google.com/drive/folders/1Nw0o1aHc9_iMXxhjVZrXagP6kWPZbb4i?dmr=1&ec=wgc-drive-globalnav-goto
+
 ### Автоматический запуск (рекомендуется)
 ```bash
 ./start_improved_system.sh
