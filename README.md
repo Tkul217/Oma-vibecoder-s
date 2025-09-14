@@ -31,16 +31,16 @@
 ```bash
 cd model
 pip install -r requirements.txt
-python improved_app.py
+python api_server.py
 ```
-**Откройте**: http://localhost:5010
+**API доступен**: http://localhost:5010
 
 #### Вариант 2: Python API + React фронтенд
 ```bash
 # Терминал 1: Python API
 cd model
 pip install -r requirements.txt
-python improved_app.py
+python api_server.py
 
 # Терминал 2: React фронтенд
 npm install
@@ -48,8 +48,8 @@ npm run dev
 ```
 
 ### Открыть приложение
-- **Python API**: http://localhost:5010 (красивый веб-интерфейс)
-- **React фронтенд**: http://localhost:5173 (современный интерфейс)
+- **React фронтенд**: http://localhost:5173 (веб-интерфейс)
+- **Python API**: http://localhost:5010 (только API)
 - **Node.js API** (устаревший): http://localhost:3001
 
 ## 📁 Структура проекта
@@ -122,7 +122,6 @@ python improved_train.py
 - `POST /predict` - Анализ изображения автомобиля
 - `GET /health` - Проверка состояния API
 - `GET /info` - Информация об API
-- `GET /` - Веб-интерфейс
 
 ### Node.js API (устаревший)
 - `POST /api/analyze` - Анализ изображения автомобиля
@@ -134,11 +133,11 @@ python improved_train.py
 ```bash
 # Вариант 1: Только Python API
 cd model
-python improved_app.py
-# Откройте http://localhost:5010
+python api_server.py
+# API доступен на http://localhost:5010
 
 # Вариант 2: Python API + React
-cd model && python improved_app.py &
+cd model && python api_server.py &
 npm run dev
 # Откройте http://localhost:5173
 ```

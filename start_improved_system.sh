@@ -52,7 +52,7 @@ echo "🚀 Запускаем систему..."
 # Запускаем Python API в фоне
 echo "🐍 Запуск Python API (порт 5010)..."
 cd model
-python3 improved_app.py &
+python3 api_server.py &
 PYTHON_PID=$!
 cd ..
 
@@ -66,8 +66,8 @@ FRONTEND_PID=$!
 
 echo ""
 echo "✅ Система запущена!"
-echo "🐍 Python API: http://localhost:5010"
-echo "⚛️  React фронтенд: http://localhost:5173"
+echo "🐍 Python API: http://localhost:5010 (только API)"
+echo "⚛️  React фронтенд: http://localhost:5173 (веб-интерфейс)"
 echo "🤖 Используется улучшенная модель из папки model/"
 echo ""
 echo "Для остановки нажмите Ctrl+C"
