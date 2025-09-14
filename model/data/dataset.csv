@@ -1,0 +1,173 @@
+image_path,cleanliness,damage,split,original_path
+train/clean_intact/images (30).jpeg,clean,intact,train,photos/clean_whole/images (30).jpeg
+train/clean_intact/images (2).jpeg,clean,intact,train,photos/clean_whole/images (2).jpeg
+train/clean_intact/Без названия (1).jpeg,clean,intact,train,photos/clean_whole/Без названия (1).jpeg
+train/clean_intact/images (29).jpeg,clean,intact,train,photos/clean_whole/images (29).jpeg
+val/clean_intact/images (14).jpeg,clean,intact,val,photos/clean_whole/images (14).jpeg
+train/clean_intact/images (16).jpeg,clean,intact,train,photos/clean_whole/images (16).jpeg
+val/clean_intact/@7blurry.jpeg,clean,intact,val,photos/clean_whole/@7blurry.jpeg
+train/clean_intact/images (4).jpeg,clean,intact,train,photos/clean_whole/images (4).jpeg
+val/clean_intact/images.jpeg,clean,intact,val,photos/clean_whole/images.jpeg
+train/clean_intact/images (12).jpeg,clean,intact,train,photos/clean_whole/images (12).jpeg
+train/clean_intact/gen1200.jpg,clean,intact,train,photos/clean_whole/gen1200.jpg
+train/clean_intact/BMW M3 G81.jpeg,clean,intact,train,photos/clean_whole/BMW M3 G81.jpeg
+train/clean_intact/images (10).jpeg,clean,intact,train,photos/clean_whole/images (10).jpeg
+val/clean_intact/images (6).jpeg,clean,intact,val,photos/clean_whole/images (6).jpeg
+train/clean_intact/Без названия4.jpeg,clean,intact,train,photos/clean_whole/Без названия4.jpeg
+train/clean_intact/images (17).jpeg,clean,intact,train,photos/clean_whole/images (17).jpeg
+train/clean_intact/IIAAAgBGXeA-960.jpg,clean,intact,train,photos/clean_whole/IIAAAgBGXeA-960.jpg
+train/clean_intact/images (1).jpeg,clean,intact,train,photos/clean_whole/images (1).jpeg
+train/clean_intact/Без названия (2).jpeg,clean,intact,train,photos/clean_whole/Без названия (2).jpeg
+val/clean_intact/images (31).jpeg,clean,intact,val,photos/clean_whole/images (31).jpeg
+train/clean_intact/images (3).jpeg,clean,intact,train,photos/clean_whole/images (3).jpeg
+train/clean_intact/Без названия3.jpeg,clean,intact,train,photos/clean_whole/Без названия3.jpeg
+train/clean_intact/images (15).jpeg,clean,intact,train,photos/clean_whole/images (15).jpeg
+train/clean_intact/images (28).jpeg,clean,intact,train,photos/clean_whole/images (28).jpeg
+train/clean_intact/images (11).jpeg,clean,intact,train,photos/clean_whole/images (11).jpeg
+train/clean_intact/Без названия2.jpeg,clean,intact,train,photos/clean_whole/Без названия2.jpeg
+train/clean_intact/M3 g80.jpeg,clean,intact,train,photos/clean_whole/M3 g80.jpeg
+train/clean_intact/images (7).jpeg,clean,intact,train,photos/clean_whole/images (7).jpeg
+val/clean_intact/Без названия.jpeg,clean,intact,val,photos/clean_whole/Без названия.jpeg
+val/clean_intact/gen1200 (1).jpg,clean,intact,val,photos/clean_whole/gen1200 (1).jpg
+train/clean_intact/images (5).jpeg,clean,intact,train,photos/clean_whole/images (5).jpeg
+val/clean_intact/images (13).jpeg,clean,intact,val,photos/clean_whole/images (13).jpeg
+train/clean_intact/images (22).jpeg,clean,intact,train,photos/clean_whole/images (22).jpeg
+train/clean_intact/images (9).jpeg,clean,intact,train,photos/clean_whole/images (9).jpeg
+val/clean_intact/Без названия1.jpeg,clean,intact,val,photos/clean_whole/Без названия1.jpeg
+train/clean_intact/images (20).jpeg,clean,intact,train,photos/clean_whole/images (20).jpeg
+train/clean_intact/-wAAAgBPouA-960.jpg,clean,intact,train,photos/clean_whole/-wAAAgBPouA-960.jpg
+train/clean_intact/images (24).jpeg,clean,intact,train,photos/clean_whole/images (24).jpeg
+train/clean_intact/BMW M4 G82.jpeg,clean,intact,train,photos/clean_whole/BMW M4 G82.jpeg
+train/clean_intact/images (19).jpeg,clean,intact,train,photos/clean_whole/images (19).jpeg
+train/clean_intact/bmw m4.jpeg,clean,intact,train,photos/clean_whole/bmw m4.jpeg
+val/clean_intact/images (26).jpeg,clean,intact,val,photos/clean_whole/images (26).jpeg
+train/clean_intact/images (21).jpeg,clean,intact,train,photos/clean_whole/images (21).jpeg
+train/clean_intact/images (23).jpeg,clean,intact,train,photos/clean_whole/images (23).jpeg
+train/clean_intact/images (8).jpeg,clean,intact,train,photos/clean_whole/images (8).jpeg
+train/clean_intact/images (27).jpeg,clean,intact,train,photos/clean_whole/images (27).jpeg
+train/clean_intact/b1ec7b18ac83f2f838691db6064fd37a.jpg,clean,intact,train,photos/clean_whole/b1ec7b18ac83f2f838691db6064fd37a.jpg
+train/clean_intact/images (18).jpeg,clean,intact,train,photos/clean_whole/images (18).jpeg
+train/clean_intact/images (25).jpeg,clean,intact,train,photos/clean_whole/images (25).jpeg
+train/clean_intact/6d891c03-34b1-4b43-b425-4752dad1b827.jpg,clean,intact,train,photos/clean_whole/6d891c03-34b1-4b43-b425-4752dad1b827.jpg
+val/clean_damaged/thumb (4).jpg,clean,damaged,val,photos/clean_broken/thumb (4).jpg
+train/clean_damaged/thumb (15).jpg,clean,damaged,train,photos/clean_broken/thumb (15).jpg
+train/clean_damaged/b1045a91f560e4e689fb6b2e2ce88661.jpg,clean,damaged,train,photos/clean_broken/b1045a91f560e4e689fb6b2e2ce88661.jpg
+val/clean_damaged/43ce862e44ba2078a665b62d48daf8c0.jpg,clean,damaged,val,photos/clean_broken/43ce862e44ba2078a665b62d48daf8c0.jpg
+train/clean_damaged/729deaa5e43fa3c0e2cea0831467a657.jpg,clean,damaged,train,photos/clean_broken/729deaa5e43fa3c0e2cea0831467a657.jpg
+train/clean_damaged/thumb (8).jpg,clean,damaged,train,photos/clean_broken/thumb (8).jpg
+train/clean_damaged/Без названия (3).jpeg,clean,damaged,train,photos/clean_broken/Без названия (3).jpeg
+train/clean_damaged/lovely+.jpeg,clean,damaged,train,photos/clean_broken/lovely+.jpeg
+val/clean_damaged/01d64f8a7f0c4c1a1d725995c84cd03c.jpg,clean,damaged,val,photos/clean_broken/01d64f8a7f0c4c1a1d725995c84cd03c.jpg
+train/clean_damaged/thumb (18).jpg,clean,damaged,train,photos/clean_broken/thumb (18).jpg
+train/clean_damaged/thumb (9).jpg,clean,damaged,train,photos/clean_broken/thumb (9).jpg
+train/clean_damaged/95184db37dca6b4936127c5753c39517.jpg,clean,damaged,train,photos/clean_broken/95184db37dca6b4936127c5753c39517.jpg
+train/clean_damaged/a93e89efb51cb3e3b9a8bfd2e6023af6.jpg,clean,damaged,train,photos/clean_broken/a93e89efb51cb3e3b9a8bfd2e6023af6.jpg
+train/clean_damaged/images.jpeg,clean,damaged,train,photos/clean_broken/images.jpeg
+train/clean_damaged/thumb (14).jpg,clean,damaged,train,photos/clean_broken/thumb (14).jpg
+train/clean_damaged/thumb (5).jpg,clean,damaged,train,photos/clean_broken/thumb (5).jpg
+train/clean_damaged/Без названия4.jpeg,clean,damaged,train,photos/clean_broken/Без названия4.jpeg
+train/clean_damaged/1b9c03f7fcd9ad853a564c3c0a6ac3d0.jpg,clean,damaged,train,photos/clean_broken/1b9c03f7fcd9ad853a564c3c0a6ac3d0.jpg
+val/clean_damaged/bmw style.jpeg,clean,damaged,val,photos/clean_broken/bmw style.jpeg
+val/clean_damaged/images (1).jpeg,clean,damaged,val,photos/clean_broken/images (1).jpeg
+train/clean_damaged/df59e0774f4c98bb030cd99c1714ad26.jpg,clean,damaged,train,photos/clean_broken/df59e0774f4c98bb030cd99c1714ad26.jpg
+train/clean_damaged/0d35137f9796e70d27f7c7c55f9beecf.jpg,clean,damaged,train,photos/clean_broken/0d35137f9796e70d27f7c7c55f9beecf.jpg
+val/clean_damaged/thumb (2).jpg,clean,damaged,val,photos/clean_broken/thumb (2).jpg
+train/clean_damaged/thumb (13).jpg,clean,damaged,train,photos/clean_broken/thumb (13).jpg
+train/clean_damaged/9fa49d60a324eca93f99cd259445c8d0.jpg,clean,damaged,train,photos/clean_broken/9fa49d60a324eca93f99cd259445c8d0.jpg
+train/clean_damaged/thumb (12).jpg,clean,damaged,train,photos/clean_broken/thumb (12).jpg
+train/clean_damaged/thumb (3).jpg,clean,damaged,train,photos/clean_broken/thumb (3).jpg
+train/clean_damaged/ea8879ee2db9b8f63fd839f1245bedc2.jpg,clean,damaged,train,photos/clean_broken/ea8879ee2db9b8f63fd839f1245bedc2.jpg
+train/clean_damaged/c5deae735935ef92686db35d0c1d3bcc.jpg,clean,damaged,train,photos/clean_broken/c5deae735935ef92686db35d0c1d3bcc.jpg
+train/clean_damaged/Без названия2.jpeg,clean,damaged,train,photos/clean_broken/Без названия2.jpeg
+train/clean_damaged/10fe2fb7f6b2f60756cf1ebc2b102205.jpg,clean,damaged,train,photos/clean_broken/10fe2fb7f6b2f60756cf1ebc2b102205.jpg
+train/clean_damaged/Без названия.jpeg,clean,damaged,train,photos/clean_broken/Без названия.jpeg
+train/clean_damaged/Без названия.png,clean,damaged,train,photos/clean_broken/Без названия.png
+train/clean_damaged/thumb (11).jpg,clean,damaged,train,photos/clean_broken/thumb (11).jpg
+train/clean_damaged/674ef86f5ec710bf214d74952d87c138.jpg,clean,damaged,train,photos/clean_broken/674ef86f5ec710bf214d74952d87c138.jpg
+train/clean_damaged/c75210c4465014db36f2f9b46ee1102f.jpg,clean,damaged,train,photos/clean_broken/c75210c4465014db36f2f9b46ee1102f.jpg
+train/clean_damaged/thumb (1).jpg,clean,damaged,train,photos/clean_broken/thumb (1).jpg
+train/clean_damaged/thumb (10).jpg,clean,damaged,train,photos/clean_broken/thumb (10).jpg
+val/clean_damaged/70062a23bbf0f0042ceaa17a78b7bfc0.jpg,clean,damaged,val,photos/clean_broken/70062a23bbf0f0042ceaa17a78b7bfc0.jpg
+train/clean_damaged/2eefc76a61e775ab47a65e56adc913fc.jpg,clean,damaged,train,photos/clean_broken/2eefc76a61e775ab47a65e56adc913fc.jpg
+train/clean_damaged/15b6daf67725e4ff22b25994fc7e8e79.jpg,clean,damaged,train,photos/clean_broken/15b6daf67725e4ff22b25994fc7e8e79.jpg
+train/clean_damaged/thumb (17).jpg,clean,damaged,train,photos/clean_broken/thumb (17).jpg
+train/clean_damaged/thumb (6).jpg,clean,damaged,train,photos/clean_broken/thumb (6).jpg
+train/clean_damaged/a6058b9f618582bd70f1877b47a1ebf0.jpg,clean,damaged,train,photos/clean_broken/a6058b9f618582bd70f1877b47a1ebf0.jpg
+train/clean_damaged/cee70ed89091a2811d6b07c957d354ed.jpg,clean,damaged,train,photos/clean_broken/cee70ed89091a2811d6b07c957d354ed.jpg
+train/clean_damaged/de7e06b8a092a6bf381a7a0bfad10ae0.jpg,clean,damaged,train,photos/clean_broken/de7e06b8a092a6bf381a7a0bfad10ae0.jpg
+train/clean_damaged/thumb (7).jpg,clean,damaged,train,photos/clean_broken/thumb (7).jpg
+train/clean_damaged/thumb.jpg,clean,damaged,train,photos/clean_broken/thumb.jpg
+val/clean_damaged/188242ed391e3f4f6df7491836c59d2b.jpg,clean,damaged,val,photos/clean_broken/188242ed391e3f4f6df7491836c59d2b.jpg
+train/clean_damaged/thumb (16).jpg,clean,damaged,train,photos/clean_broken/thumb (16).jpg
+train/clean_damaged/fb00e3e0b4ec37e4eef4a76d54b764eb.jpg,clean,damaged,train,photos/clean_broken/fb00e3e0b4ec37e4eef4a76d54b764eb.jpg
+train/dirty_intact/images (2).jpeg,dirty,intact,train,photos/dirty_whole/images (2).jpeg
+train/dirty_intact/282db42c640e71f9b6ab085b9bd1a26c.jpg,dirty,intact,train,photos/dirty_whole/282db42c640e71f9b6ab085b9bd1a26c.jpg
+train/dirty_intact/4a6514e8e209a18d938adb2567c67f94.jpg,dirty,intact,train,photos/dirty_whole/4a6514e8e209a18d938adb2567c67f94.jpg
+train/dirty_intact/cb6c9e4s-960.jpg,dirty,intact,train,photos/dirty_whole/cb6c9e4s-960.jpg
+train/dirty_intact/9a423af9056bee1763d1347fd964c419.jpg,dirty,intact,train,photos/dirty_whole/9a423af9056bee1763d1347fd964c419.jpg
+train/dirty_intact/1667530782_2-sportishka-com-p-gryaznaya-mashina-krasivo-2.jpg,dirty,intact,train,photos/dirty_whole/1667530782_2-sportishka-com-p-gryaznaya-mashina-krasivo-2.jpg
+val/dirty_intact/seraia-griaznaia-mashina-1.webp,dirty,intact,val,photos/dirty_whole/seraia-griaznaia-mashina-1.webp
+val/dirty_intact/1601-1659424567-avto11-post-material.jpeg,dirty,intact,val,photos/dirty_whole/1601-1659424567-avto11-post-material.jpeg
+train/dirty_intact/gryaznaya-mashina-1.jpg,dirty,intact,train,photos/dirty_whole/gryaznaya-mashina-1.jpg
+train/dirty_intact/images (4).jpeg,dirty,intact,train,photos/dirty_whole/images (4).jpeg
+train/dirty_intact/images.jpeg,dirty,intact,train,photos/dirty_whole/images.jpeg
+train/dirty_intact/foto-pochemu-tormozyat_01.jpg,dirty,intact,train,photos/dirty_whole/foto-pochemu-tormozyat_01.jpg
+train/dirty_intact/6c004d013d10a776a7f6b61a2242d336.jpg,dirty,intact,train,photos/dirty_whole/6c004d013d10a776a7f6b61a2242d336.jpg
+train/dirty_intact/0c3f473c381cb0bdaccc7d94d10ea6ea.jpg,dirty,intact,train,photos/dirty_whole/0c3f473c381cb0bdaccc7d94d10ea6ea.jpg
+val/dirty_intact/518ee06f1e0c8b24a78c40d84282d95c.jpg,dirty,intact,val,photos/dirty_whole/518ee06f1e0c8b24a78c40d84282d95c.jpg
+train/dirty_intact/4fdc495327eaa3991b7885c66e9c5a7b.jpg,dirty,intact,train,photos/dirty_whole/4fdc495327eaa3991b7885c66e9c5a7b.jpg
+val/dirty_intact/images (1).jpeg,dirty,intact,val,photos/dirty_whole/images (1).jpeg
+train/dirty_intact/22554e98713d007e0b6a3c4d095d9ea1.jpg,dirty,intact,train,photos/dirty_whole/22554e98713d007e0b6a3c4d095d9ea1.jpg
+train/dirty_intact/images (3).jpeg,dirty,intact,train,photos/dirty_whole/images (3).jpeg
+train/dirty_intact/dirty_ch.jpg,dirty,intact,train,photos/dirty_whole/dirty_ch.jpg
+val/dirty_intact/0003922424-larger.jpg,dirty,intact,val,photos/dirty_whole/0003922424-larger.jpg
+val/dirty_intact/2419c7e5e0daacb59bd6a3aaf1070823.jpg,dirty,intact,val,photos/dirty_whole/2419c7e5e0daacb59bd6a3aaf1070823.jpg
+train/dirty_intact/3626543bbeb93efdf287b98901c29f4f95f2a6f8-1193x671.jpg,dirty,intact,train,photos/dirty_whole/3626543bbeb93efdf287b98901c29f4f95f2a6f8-1193x671.jpg
+train/dirty_intact/image-dirty-car-after-trip-off-road-stands-against-brick-wall-old-part-town_613910-6302.jpg,dirty,intact,train,photos/dirty_whole/image-dirty-car-after-trip-off-road-stands-against-brick-wall-old-part-town_613910-6302.jpg
+train/dirty_intact/cca2235023bc94f272ee900042d601e7.jpg,dirty,intact,train,photos/dirty_whole/cca2235023bc94f272ee900042d601e7.jpg
+train/dirty_intact/5b80172s-960.jpg,dirty,intact,train,photos/dirty_whole/5b80172s-960.jpg
+val/dirty_intact/03247e06b3fb171eaa5b18e6977079e9.jpg,dirty,intact,val,photos/dirty_whole/03247e06b3fb171eaa5b18e6977079e9.jpg
+train/dirty_intact/b296a7135032c2d05c245eb391155086.jpg,dirty,intact,train,photos/dirty_whole/b296a7135032c2d05c245eb391155086.jpg
+train/dirty_intact/a0e5215159109488748f36f6ef96c8c9.jpg,dirty,intact,train,photos/dirty_whole/a0e5215159109488748f36f6ef96c8c9.jpg
+train/dirty_intact/f88c3dbe83e3de607cd7a0cd429565be.jpg,dirty,intact,train,photos/dirty_whole/f88c3dbe83e3de607cd7a0cd429565be.jpg
+val/dirty_intact/650x.jpg,dirty,intact,val,photos/dirty_whole/650x.jpg
+train/dirty_intact/2eac715df1b621d52414dcf78b5ec72b.jpg,dirty,intact,train,photos/dirty_whole/2eac715df1b621d52414dcf78b5ec72b.jpg
+train/dirty_intact/63063331_dfa56caae665ab909a8d1f3c3df01fc9_800.jpg,dirty,intact,train,photos/dirty_whole/63063331_dfa56caae665ab909a8d1f3c3df01fc9_800.jpg
+train/dirty_intact/d0fc08a6b8f1339d1e075201f79468e6.jpg,dirty,intact,train,photos/dirty_whole/d0fc08a6b8f1339d1e075201f79468e6.jpg
+train/dirty_intact/cca2a069ef3e9b017fd05e80a2ff38b9.jpg,dirty,intact,train,photos/dirty_whole/cca2a069ef3e9b017fd05e80a2ff38b9.jpg
+train/dirty_intact/e541df3a6f49d3b104e72ad80ec76dcd.jpg,dirty,intact,train,photos/dirty_whole/e541df3a6f49d3b104e72ad80ec76dcd.jpg
+train/dirty_intact/78d9e1fe837a11ac2eda45ac5a0cfbcf.jpg,dirty,intact,train,photos/dirty_whole/78d9e1fe837a11ac2eda45ac5a0cfbcf.jpg
+train/dirty_intact/funny-klev-club-p-smeshnie-kartinki-gryaznaya-mashina-22.jpg,dirty,intact,train,photos/dirty_whole/funny-klev-club-p-smeshnie-kartinki-gryaznaya-mashina-22.jpg
+train/dirty_intact/depositphotos_467260670-stock-photo-dusty-car-very-dirty-car.jpg,dirty,intact,train,photos/dirty_whole/depositphotos_467260670-stock-photo-dusty-car-very-dirty-car.jpg
+train/dirty_intact/fec2a172d29a5f256494a6cf5f38e5b0.jpg,dirty,intact,train,photos/dirty_whole/fec2a172d29a5f256494a6cf5f38e5b0.jpg
+train/dirty_intact/1641986186_5-hdpic-club-p-gryaznaya-mashina-14.jpg,dirty,intact,train,photos/dirty_whole/1641986186_5-hdpic-club-p-gryaznaya-mashina-14.jpg
+train/dirty_intact/14518d208ba67d967f476d2763c58e33.jpg,dirty,intact,train,photos/dirty_whole/14518d208ba67d967f476d2763c58e33.jpg
+train/dirty_intact/57d69667ac6615d2fea9eb54f13976ff.jpg,dirty,intact,train,photos/dirty_whole/57d69667ac6615d2fea9eb54f13976ff.jpg
+train/dirty_intact/6a1e928s-960.jpg,dirty,intact,train,photos/dirty_whole/6a1e928s-960.jpg
+train/dirty_intact/pngtree-a-car-is-in-muddy-field-the-old-and-rusted-image_16935467.jpg,dirty,intact,train,photos/dirty_whole/pngtree-a-car-is-in-muddy-field-the-old-and-rusted-image_16935467.jpg
+val/dirty_intact/pngtree-3d-muddy-car-stuck-on-beautiful-background-image_16261435.jpg,dirty,intact,val,photos/dirty_whole/pngtree-3d-muddy-car-stuck-on-beautiful-background-image_16261435.jpg
+train/dirty_damaged/images (2).jpeg,dirty,damaged,train,photos/dirty_broken/images (2).jpeg
+train/dirty_damaged/Без названия (1).jpeg,dirty,damaged,train,photos/dirty_broken/Без названия (1).jpeg
+train/dirty_damaged/thumb (4).jpg,dirty,damaged,train,photos/dirty_broken/thumb (4).jpg
+train/dirty_damaged/Без названия (3).jpeg,dirty,damaged,train,photos/dirty_broken/Без названия (3).jpeg
+train/dirty_damaged/images (4).jpeg,dirty,damaged,train,photos/dirty_broken/images (4).jpeg
+train/dirty_damaged/images.jpeg,dirty,damaged,train,photos/dirty_broken/images.jpeg
+train/dirty_damaged/thumb (5).jpg,dirty,damaged,train,photos/dirty_broken/thumb (5).jpg
+train/dirty_damaged/Без названия (5).jpeg,dirty,damaged,train,photos/dirty_broken/Без названия (5).jpeg
+train/dirty_damaged/images (1).jpeg,dirty,damaged,train,photos/dirty_broken/images (1).jpeg
+train/dirty_damaged/Без названия (2).jpeg,dirty,damaged,train,photos/dirty_broken/Без названия (2).jpeg
+train/dirty_damaged/images (3).jpeg,dirty,damaged,train,photos/dirty_broken/images (3).jpeg
+train/dirty_damaged/thumb (2).jpg,dirty,damaged,train,photos/dirty_broken/thumb (2).jpg
+train/dirty_damaged/thumb (3).jpg,dirty,damaged,train,photos/dirty_broken/thumb (3).jpg
+train/dirty_damaged/Без названия (4).jpeg,dirty,damaged,train,photos/dirty_broken/Без названия (4).jpeg
+train/dirty_damaged/Без названия.jpeg,dirty,damaged,train,photos/dirty_broken/Без названия.jpeg
+train/dirty_damaged/1636158090_1-krot-info-p-staraya-razvalennaya-mashina-mashini-krasi-1.jpg,dirty,damaged,train,photos/dirty_broken/1636158090_1-krot-info-p-staraya-razvalennaya-mashina-mashini-krasi-1.jpg
+val/dirty_damaged/fe6468465ab2809d5fa4b126d9884ff3.jpg,dirty,damaged,val,photos/dirty_broken/fe6468465ab2809d5fa4b126d9884ff3.jpg
+train/dirty_damaged/2bc7da7e7d885e75a58d7c1be95cbe6b.jpg,dirty,damaged,train,photos/dirty_broken/2bc7da7e7d885e75a58d7c1be95cbe6b.jpg
+val/dirty_damaged/thumb (1).jpg,dirty,damaged,val,photos/dirty_broken/thumb (1).jpg
+train/dirty_damaged/сломанная-машина-брошена-на-дороге-украденный-автомобиль-колеса-были-236973863.webp,dirty,damaged,train,photos/dirty_broken/сломанная-машина-брошена-на-дороге-украденный-автомобиль-колеса-были-236973863.webp
+train/dirty_damaged/thumb (6).jpg,dirty,damaged,train,photos/dirty_broken/thumb (6).jpg
+train/dirty_damaged/burnedout-car-car-accident-stands-side-road-car-accident-family-trouble-broken-car-without-people-background-nature_199683-2032.jpg,dirty,damaged,train,photos/dirty_broken/burnedout-car-car-accident-stands-side-road-car-accident-family-trouble-broken-car-without-people-background-nature_199683-2032.jpg
+train/dirty_damaged/0124ab28f57f4c857ae1c059fadfb3a1.jpg,dirty,damaged,train,photos/dirty_broken/0124ab28f57f4c857ae1c059fadfb3a1.jpg
+train/dirty_damaged/4b8e0f8a4e2a96c6149d6619fd10cdbc.jpg,dirty,damaged,train,photos/dirty_broken/4b8e0f8a4e2a96c6149d6619fd10cdbc.jpg
+val/dirty_damaged/thumb.jpg,dirty,damaged,val,photos/dirty_broken/thumb.jpg

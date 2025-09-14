@@ -1,3 +1,8 @@
 /node_modules/*
 /server/node_modules/*
 /ml/models/*
+
+/model/best_improved_model.pth
+/model/final_improved_model.pth
+/model/train_temp.csv
+/model/val_temp.csv
