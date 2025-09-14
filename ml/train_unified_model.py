@@ -109,32 +109,32 @@ def load_data_from_folders(data_dir):
     print("Загрузка данных из папок...")
     
     for folder_name, class_id in class_mapping.items():
-        folder_path = os.path.join(data_dir, folder_name)
-        
+        folder_path = os.path.join('../data', folder_name)
+
         if not os.path.exists(folder_path):
             print(f"⚠️  Папка {folder_path} не найдена!")
             continue
-        
+
         # Поддерживаемые форматы изображений
         valid_extensions = {'.jpg', '.jpeg', '.png', '.bmp', '.tiff'}
-        
+
         for filename in os.listdir(folder_path):
             if any(filename.lower().endswith(ext) for ext in valid_extensions):
                 image_path = os.path.join(folder_path, filename)
                 image_paths.append(image_path)
                 labels.append(class_id)
                 class_counts[folder_name] += 1
-    
+
     print("\n📊 Статистика данных:")
     for folder_name, count in class_counts.items():
         print(f"  {folder_name}: {count} изображений")
     print(f"  Всего: {len(image_paths)} изображений")
-    
+
     return image_paths, labels, class_mapping
 
 def get_transforms():
     """Получение трансформаций для обучения и валидации"""
-    
+
     # Аугментации для обучения
     train_transform = transforms.Compose([
         transforms.Resize((256, 256)),
@@ -144,140 +144,140 @@ def get_transforms():
         transforms.ColorJitter(brightness=0.3, contrast=0.3, saturation=0.3, hue=0.1),
         transforms.RandomAffine(degrees=0, translate=(0.1, 0.1)),
         transforms.ToTensor(),
-        transforms.Normalize(mean=[0.485, 0.456, 0.406], 
+        transforms.Normalize(mean=[0.485, 0.456, 0.406],
                            std=[0.229, 0.224, 0.225])
     ])
-    
+
     # Трансформации для валидации
     val_transform = transforms.Compose([
         transforms.Resize((224, 224)),
         transforms.ToTensor(),
-        transforms.Normalize(mean=[0.485, 0.456, 0.406], 
+        transforms.Normalize(mean=[0.485, 0.456, 0.406],
                            std=[0.229, 0.224, 0.225])
     ])
-    
+
     return train_transform, val_transform
 
 def train_model(model, train_loader, val_loader, num_epochs=50, device='cuda', save_path='models/'):
     """Обучение модели"""
-    
+
     # Создаем папку для сохранения моделей
     os.makedirs(save_path, exist_ok=True)
-    
+
     # Настройка оптимизатора и функции потерь
     criterion = nn.CrossEntropyLoss()
     optimizer = optim.AdamW(model.parameters(), lr=0.001, weight_decay=0.01)
     scheduler = optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode='max', patience=5, factor=0.5)
-    
+
     best_acc = 0.0
     train_losses = []
     val_accuracies = []
-    
+
     print(f"\n🚀 Начинаем обучение на {device}")
     print(f"Эпох: {num_epochs}")
     print("-" * 60)
-    
+
     for epoch in range(num_epochs):
         print(f'\nЭпоха {epoch+1}/{num_epochs}')
-        
+
         # Фаза обучения
         model.train()
         running_loss = 0.0
         running_corrects = 0
         total_samples = 0
-        
+
         train_bar = tqdm(train_loader, desc="Обучение")
         for inputs, labels in train_bar:
             inputs = inputs.to(device)
             labels = labels.to(device)
-            
+
             optimizer.zero_grad()
-            
+
             outputs = model(inputs)
             loss = criterion(outputs, labels)
-            
+
             loss.backward()
             optimizer.step()
-            
+
             _, preds = torch.max(outputs, 1)
             running_loss += loss.item() * inputs.size(0)
             running_corrects += torch.sum(preds == labels.data)
             total_samples += inputs.size(0)
-            
+
             # Обновляем прогресс-бар
             current_acc = running_corrects.double() / total_samples
             train_bar.set_postfix({
                 'loss': f'{loss.item():.4f}',
                 'acc': f'{current_acc:.4f}'
             })
-        
+
         epoch_loss = running_loss / len(train_loader.dataset)
         epoch_acc = running_corrects.double() / len(train_loader.dataset)
         train_losses.append(epoch_loss)
-        
+
         print(f'Обучение - Loss: {epoch_loss:.4f} Acc: {epoch_acc:.4f}')
-        
+
         # Фаза валидации
         model.eval()
         val_corrects = 0
         val_total = 0
         all_preds = []
         all_labels = []
-        
+
         with torch.no_grad():
             val_bar = tqdm(val_loader, desc="Валидация")
             for inputs, labels in val_bar:
                 inputs = inputs.to(device)
                 labels = labels.to(device)
-                
+
                 outputs = model(inputs)
                 _, preds = torch.max(outputs, 1)
-                
+
                 val_corrects += torch.sum(preds == labels.data)
                 val_total += labels.size(0)
-                
+
                 all_preds.extend(preds.cpu().numpy())
                 all_labels.extend(labels.cpu().numpy())
-        
+
         val_acc = val_corrects.double() / val_total
         val_accuracies.append(val_acc)
-        
+
         print(f'Валидация - Acc: {val_acc:.4f}')
-        
+
         # Сохранение лучшей модели
         if val_acc > best_acc:
             best_acc = val_acc
             torch.save(model.state_dict(), os.path.join(save_path, 'best_unified_model.pth'))
             print(f'✅ Новая лучшая модель сохранена! Точность: {best_acc:.4f}')
-        
+
         # Обновление learning rate
         scheduler.step(val_acc)
-        
+
         # Сохранение промежуточной модели каждые 10 эпох
         if (epoch + 1) % 10 == 0:
             torch.save(model.state_dict(), os.path.join(save_path, f'model_epoch_{epoch+1}.pth'))
-    
+
     print(f"\n🎉 Обучение завершено!")
     print(f"Лучшая точность: {best_acc:.4f}")
-    
+
     # Построение графиков
     plot_training_history(train_losses, val_accuracies, save_path)
-    
+
     # Отчет по классификации
     class_names = ['clean_intact', 'clean_damaged', 'dirty_intact', 'dirty_damaged']
     print("\n📊 Отчет по классификации:")
     print(classification_report(all_labels, all_preds, target_names=class_names))
-    
+
     # Матрица ошибок
     plot_confusion_matrix(all_labels, all_preds, class_names, save_path)
-    
+
     return model
 
 def plot_training_history(train_losses, val_accuracies, save_path):
     """Построение графиков обучения"""
-    
+
     plt.figure(figsize=(15, 5))
-    
+
     # График потерь
     plt.subplot(1, 2, 1)
     plt.plot(train_losses, 'b-', label='Training Loss')
@@ -286,7 +286,7 @@ def plot_training_history(train_losses, val_accuracies, save_path):
     plt.ylabel('Loss')
     plt.legend()
     plt.grid(True)
-    
+
     # График точности
     plt.subplot(1, 2, 2)
     plt.plot([acc.cpu().numpy() for acc in val_accuracies], 'r-', label='Validation Accuracy')
@@ -295,20 +295,20 @@ def plot_training_history(train_losses, val_accuracies, save_path):
     plt.ylabel('Accuracy')
     plt.legend()
     plt.grid(True)
-    
+
     plt.tight_layout()
     plt.savefig(os.path.join(save_path, 'training_history.png'), dpi=300, bbox_inches='tight')
     plt.close()
-    
+
     print("📈 Графики обучения сохранены в training_history.png")
 
 def plot_confusion_matrix(y_true, y_pred, class_names, save_path):
     """Построение матрицы ошибок"""
-    
+
     cm = confusion_matrix(y_true, y_pred)
-    
+
     plt.figure(figsize=(10, 8))
-    sns.heatmap(cm, annot=True, fmt='d', cmap='Blues', 
+    sns.heatmap(cm, annot=True, fmt='d', cmap='Blues',
                 xticklabels=class_names, yticklabels=class_names)
     plt.title('Confusion Matrix')
     plt.xlabel('Predicted')
@@ -316,12 +316,12 @@ def plot_confusion_matrix(y_true, y_pred, class_names, save_path):
     plt.tight_layout()
     plt.savefig(os.path.join(save_path, 'confusion_matrix.png'), dpi=300, bbox_inches='tight')
     plt.close()
-    
+
     print("📊 Матрица ошибок сохранена в confusion_matrix.png")
 
 def create_inference_script(class_mapping, save_path):
     """Создание скрипта для инференса"""
-    
+
     inference_code = f'''#!/usr/bin/env python3
 """
 Скрипт для инференса обученной модели
@@ -342,7 +342,7 @@ class UnifiedCarModel(torch.nn.Module):
     def __init__(self, num_classes=4):
         super(UnifiedCarModel, self).__init__()
         from torchvision import models
-        
+
         self.backbone = models.resnet50(pretrained=False)
         num_features = self.backbone.fc.in_features
         self.backbone.fc = torch.nn.Sequential(
@@ -357,7 +357,7 @@ class UnifiedCarModel(torch.nn.Module):
             torch.nn.Dropout(0.2),
             torch.nn.Linear(512, num_classes)
         )
-    
+
     def forward(self, x):
         return self.backbone(x)
 
@@ -371,10 +371,10 @@ def preprocess_image(image_path):
     transform = transforms.Compose([
         transforms.Resize((224, 224)),
         transforms.ToTensor(),
-        transforms.Normalize(mean=[0.485, 0.456, 0.406], 
+        transforms.Normalize(mean=[0.485, 0.456, 0.406],
                            std=[0.229, 0.224, 0.225])
     ])
-    
+
     image = Image.open(image_path).convert('RGB')
     return transform(image).unsqueeze(0)
 
@@ -383,14 +383,14 @@ def predict(model, image_tensor):
         outputs = model(image_tensor)
         probabilities = torch.nn.functional.softmax(outputs, dim=1)
         confidence, predicted = torch.max(probabilities, 1)
-        
+
         class_name = REVERSE_MAPPING[predicted.item()]
-        
+
         # Разбираем класс на компоненты
         parts = class_name.split('_')
         cleanliness = parts[0]  # clean или dirty
         condition = parts[1]    # intact или damaged
-        
+
         return {{
             'cleanliness': cleanliness,
             'cleanlinessConfidence': confidence.item(),
@@ -398,7 +398,7 @@ def predict(model, image_tensor):
             'conditionConfidence': confidence.item(),
             'full_class': class_name,
             'class_probabilities': {{
-                REVERSE_MAPPING[i]: prob.item() 
+                REVERSE_MAPPING[i]: prob.item()
                 for i, prob in enumerate(probabilities[0])
             }}
         }}
@@ -407,10 +407,10 @@ def main():
     if len(sys.argv) != 2:
         print(json.dumps({{"error": "Usage: python inference.py <image_path>"}}))
         sys.exit(1)
-    
+
     image_path = sys.argv[1]
     model_path = "best_unified_model.pth"
-    
+
     try:
         model = load_model(model_path)
         image_tensor = preprocess_image(image_path)
@@ -423,17 +423,17 @@ def main():
 if __name__ == "__main__":
     main()
 '''
-    
+
     with open(os.path.join(save_path, 'inference.py'), 'w', encoding='utf-8') as f:
         f.write(inference_code)
-    
+
     print("🔮 Скрипт для инференса создан: inference.py")
 
 def main():
     """Основная функция обучения"""
-    
+
     # Настройки
-    DATA_DIR = 'data'  # Папка с данными
+    DATA_DIR = '../data'  # Папка с данными
     MODELS_DIR = 'models'
     BATCH_SIZE = 32
     NUM_EPOCHS = 50

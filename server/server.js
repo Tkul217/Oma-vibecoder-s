@@ -87,20 +87,6 @@ async function analyzeCarImage(imagePath) {
   });
 }
 
-function getMockPrediction() {
-  // Simulate processing time
-  const processingTime = Math.round(Math.random() * 1000 + 800); // 800-1800ms
-  
-  // Mock predictions with random confidence scores
-  return {
-    cleanliness: Math.random() > 0.3 ? 'clean' : 'dirty', // 70% чистых
-    cleanlinessConfidence: 0.7 + Math.random() * 0.3, // 70-100%
-    condition: Math.random() > 0.4 ? 'intact' : 'damaged', // 60% целых
-    conditionConfidence: 0.6 + Math.random() * 0.4, // 60-100%
-    processingTime: processingTime
-  };
-}
-
 // Routes
 app.post('/api/analyze', upload.single('image'), async (req, res) => {
   try {
