@@ -8,9 +8,9 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "start:dev": "concurrently \"cd server && npm start\" \"npm run dev\"",
-    "start:server": "cd server && npm start",
-    "setup": "npm install && cd server && npm install && cd ../ml && pip install -r requirements.txt"
+    "start": "concurrently \"cd server && npm start\" \"npm run dev\"",
+    "setup": "npm install && cd server && npm install && cd ml && pip install -r requirements.txt",
+    "setup:quick": "npm install && cd server && npm install"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.57.4",
