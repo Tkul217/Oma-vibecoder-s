@@ -118,12 +118,12 @@ def predict():
         response = {
             'status': 'success',
             'cleanliness': {
-                'class': 'Чистый' if result['cleanliness'] == 'clean' else 'Грязный',
-                'confidence': float(result['cleanliness_confidence'])
+                'class': result['cleanliness']['class'],
+                'confidence': float(result['cleanliness']['confidence']),
             },
             'damage': {
-                'class': 'Целый' if result['damage'] == 'intact' else 'Поврежденный',
-                'confidence': float(result['damage_confidence'])
+                'class': result['damage']['class'],
+                'confidence': float(result['damage']['confidence']),
             },
             'quality_score': result.get('quality_score', None),
             'overall_condition': result.get('overall_condition', None),
